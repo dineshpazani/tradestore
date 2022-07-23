@@ -17,3 +17,10 @@ http://localhost:8080/trade/add
     "creationDate": "2022-07-23T10:02:31.240+00:00",
     "expired": "N"
 }
+
+
+#Build:
+mvn clean install
+
+#Run time:
+Java 11 or above
