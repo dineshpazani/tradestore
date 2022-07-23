@@ -4,6 +4,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -39,7 +42,7 @@ public class TradeControllerUnitTest {
 	}
 
 	public TradeStore getTrade() throws Exception {
-		return new TradeStore("T1", 1, "CP-1", "B1", new Date(), new Date(), "N");
+		return new TradeStore("T1", 1, "CP-1", "B1", getFutureDate(), new Date(), "N");
 
 	}
 
@@ -49,6 +52,16 @@ public class TradeControllerUnitTest {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	private Date getFutureDate() {
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			return format.parse("26/10/2024");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
